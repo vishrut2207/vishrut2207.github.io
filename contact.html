@@ -160,20 +160,20 @@
                     <span class="d-block">call</span>+8801726610839
                 </p>
                 <ul class="social list-unstyled pt-1 mb-5">
-                    <li class="facebook"><a title="Facebook" href="https://www.facebook.com/shhriar.shafin"><i class="fa fa-facebook"></i></a>
+                    <li class="facebook"><a title="Facebook" target="_blank" href="https://www.facebook.com/shhriar.shafin"><i class="fa fa-facebook"></i></a>
                     </li>
-                    <li class="twitter"><a title="Twitter" href="https://twitter.com/shhriar_shafin"><i class="fa fa-twitter"></i></a>
+                    <li class="twitter"><a title="Twitter" target="_blank" href="https://twitter.com/shhriar_shafin"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="youtube"><a title="Youtube" href="https://www.youtube.com/c/ShahriarShafin/"><i class="fa fa-youtube"></i></a>
+                    <li class="youtube"><a title="Youtube" target="_blank" href="https://www.youtube.com/c/ShahriarShafin/videos"><i class="fa fa-youtube"></i></a>
                     </li>
-                    <li class="dribbble"><a title="Dribbble" href="https://dribbble.com/shahriarshafin/"><i class="fa fa-dribbble"></i></a>
+                    <li class="dribbble"><a title="Dribbble" target="_blank" href="https://dribbble.com/shahriarshafin/"><i class="fa fa-dribbble"></i></a>
                     </li>
                 </ul>
             </div>
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form class="contactform" method="post" name="google-sheet">
+                <form id="contactform" class="contactform" method="post" name="google-sheet">
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
@@ -184,10 +184,10 @@
                             </div>
                             <div class="col-12">
                                 <textarea name="Phone" placeholder="YOUR MESSAGE" value="" required=""></textarea>
-                                <button type="submit" name="submit" value="Login" class="btn btn-contact">Send Message</button>
+                                <button type="submit" onclick="clearForm()" name="submit" value="Login" class="btn btn-contact">Send Message</button>
                             </div>
                             <div class="col-12 form-message">
-                                <span class="output_message text-center font-weight-600 text-uppercase"></span>
+                                <span id="ppp" class="output_message text-center font-weight-600 text-uppercase"></span>
                             </div>
                         </div>
                     </div>
@@ -220,9 +220,21 @@
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => alert("Thanks for Contacting ..! I Will Contact You Soon..."))
                 .catch(error => console.error('Error!', error.message))
             })
+</script>
+    <!-- Delay and Clear form  -->
+<script>
+        function clearForm() {
+            setTimeout(function () {
+                document.getElementById("contactform").reset();
+            }, 100);
+            // clear notifier text
+            setTimeout(function () {
+                document.getElementById("ppp").innerHTML = "";
+            }, 1200);
+        }
+
 </script>
 
 </body>
